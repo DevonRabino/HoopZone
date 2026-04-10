@@ -1,0 +1,51 @@
+
+.navbar-nav {
+    margin-left:auto;
+}
+
+.slider-image {
+    height: 350px;
+    width: 100%;
+    object-fit: contain;
+    background-color: white;
+}
+
+.txtbox {
+    color: black;
+    background: rgba(255,255,255,0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 18px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+@media (max-width: 768px) {
+        .slider-image {
+            height: 250px ;
+            width: 100% ;
+           
+        }
+    .title {
+        font-size: 22px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .txtbox {
+        padding: 10px;
+    }
+}
