@@ -49,3 +49,11 @@
         padding: 10px;
     }
 }
+.cardstore img{
+    height: 250px;
+    object-fit: cover;
+}
+
+.cardstore{
+    width: 100%;
+}

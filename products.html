@@ -9,6 +9,287 @@
     
 </head>
 <body>
-    
+<script>
+function filterProducts(product) {
+    let products = document.querySelectorAll(".product");
+
+    for (let i = 0; i < products.length; i++) {
+        if (product == "all" || products[i].getAttribute("data-category") == product) {
+            products[i].style.display = "";
+        } else {
+            products[i].style.display = "none";
+        }
+    }
+}
+
+function searchProducts() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let products = document.querySelectorAll(".product");
+
+    for (let i = 0; i < products.length; i++) {
+        let title = products[i].querySelector(".card-title").innerText.toLowerCase();
+
+        if (title.indexOf(input) > -1) {
+            products[i].style.display = "";
+        } else {
+            products[i].style.display = "none";
+        }
+    }
+}
+
+function addToCart(name, price) {
+    alert(name + " added to cart");
+}
+</script>
+
+<nav class="navbar navbar-expand-lg bg-light">
+<div class="container">
+
+<a class="navbar-brand" href="index.html">HoopZone</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" href="products.html">Products</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="about.html">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="contact.html">Contact</a>
+</li>
+   <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="cartDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Cart
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="cartDropdown"
+                id="cartMenu"
+              >
+                <li>
+                  <span id="emptyCart" class="dropdown-item-text"
+                    >Your cart is empty</span
+                  >
+                </li>
+              </ul>
+</ul>
+
+</div>
+</div>
+</nav>
+
+
+<div class="container mt-4">
+
+
+<input
+type="text"
+class="form-control mb-3"
+id="searchBar"
+placeholder="Search products..."
+onkeyup="searchProducts()"
+>
+
+
+
+<div class="mb-4">
+
+<button class="btn btn-dark" onclick="filterProducts('all')">All</button>
+
+<button class="btn btn-primary" onclick="filterProducts('jersey')">Jerseys</button>
+
+<button class="btn btn-success" onclick="filterProducts('cards')">Cards</button>
+
+<button class="btn btn-warning" onclick="filterProducts('Signed Basketball')">Signed Basketball</button>
+
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="jersey">
+    <div class="card cardstore">
+        <img src="img/Screenshot 2026-04-12 114818.png" class="card-img-top" alt="LeBron Lakers Jersey">
+        <div class="card-body">
+            <h5 class="card-title">Lebron Lakers Jersey</h5>
+            <p>$90</p>
+            <button class="btn btn-primary" onclick="addToCart('Lebron Lakers Jersey',90)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="jersey">
+    <div class="card cardstore">
+        <img src="img/Screenshot 2026-04-12 115118.png" class="card-img-top" alt="Steph Curry Warriors Jersey">
+        <div class="card-body">
+            <h5 class="card-title">Steph Curry Warriors Jersey</h5>
+            <p>$95</p>
+            <button class="btn btn-primary" onclick="addToCart('Steph Curry Warriors Jersey',95)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="jersey">
+    <div class="card cardstore">
+        <img src="img/Screenshot 2026-04-12 115306.png" class="card-img-top" alt="Kevin Durant Suns Jersey">
+        <div class="card-body">
+            <h5 class="card-title">Kevin Durant Suns Jersey</h5>
+            <p>$92</p>
+            <button class="btn btn-primary" onclick="addToCart('Kevin Durant Suns Jersey',92)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="jersey">
+    <div class="card cardstore">
+        <img src="img/giannis.png" class="card-img-top" alt="Giannis Bucks Jersey">
+        <div class="card-body">
+            <h5 class="card-title">Giannis Bucks Jersey</h5>
+            <p>$97</p>
+            <button class="btn btn-primary" onclick="addToCart('Giannis Bucks Jersey',97)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="jersey">
+    <div class="card cardstore">
+        <img src="img/luka.png" class="card-img-top" alt="Luka Mavericks Jersey">
+        <div class="card-body">
+            <h5 class="card-title">Luka Mavericks Jersey</h5>
+            <p>$94</p>
+            <button class="btn btn-primary" onclick="addToCart('Luka Mavericks Jersey',94)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="cards">
+    <div class="card cardstore">
+        <img src="img/2017-18.png" class="card-img-top" alt="NBA Pack 2017-18">
+        <div class="card-body">
+            <h5 class="card-title">NBA PACK 2017-18</h5>
+            <p>$15</p>
+            <button class="btn btn-primary" onclick="addToCart('NBA PACK 2017-18',15)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="cards">
+    <div class="card cardstore">
+        <img src="img/2021-22.png" class="card-img-top" alt="NBA Pack 2021-22">
+        <div class="card-body">
+            <h5 class="card-title">NBA PACK 2021-22</h5>
+            <p>$18</p>
+            <button class="btn btn-primary" onclick="addToCart('NBA PACK 2021-22',18)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="cards">
+    <div class="card cardstore">
+        <img src="img/2022-23.png" class="card-img-top" alt="NBA Pack 2022-23">
+        <div class="card-body">
+            <h5 class="card-title">NBA PACK 2022-23</h5>
+            <p>$22</p>
+            <button class="btn btn-primary" onclick="addToCart('NBA PACK 2022-23',22)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="cards">
+    <div class="card cardstore">
+        <img src="img/2023-24.png" class="card-img-top" alt="NBA Pack 2023-24">
+        <div class="card-body">
+            <h5 class="card-title">NBA PACK 2023-24</h5>
+            <p>$20</p>
+            <button class="btn btn-primary" onclick="addToCart('NBA PACK 2023-24',20)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="cards">
+    <div class="card cardstore">
+        <img src="img/2024-25.png" class="card-img-top" alt="NBA Pack 2024-25">
+        <div class="card-body">
+            <h5 class="card-title">NBA PACK 2024-25</h5>
+            <p>$25</p>
+            <button class="btn btn-primary" onclick="addToCart('NBA PACK 2024-25',25)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="Signed Basketball">
+    <div class="card cardstore">
+        <img src="img/lebron basketball.png" class="card-img-top" alt="Signed Lebron Basketball">
+        <div class="card-body">
+            <h5 class="card-title">Signed Lebron Basketball</h5>
+            <p>$350</p>
+            <button class="btn btn-primary" onclick="addToCart('Signed Lebron Basketball',350)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="Signed Basketball">
+    <div class="card cardstore">
+        <img src="img/curry basketball.png" class="card-img-top" alt="Signed Curry Basketball">
+        <div class="card-body">
+            <h5 class="card-title">Signed Curry Basketball</h5>
+            <p>$340</p>
+            <button class="btn btn-primary" onclick="addToCart('Signed Curry Basketball',340)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="Signed Basketball">
+    <div class="card cardstore">
+        <img src="img/kobe basketball.png" class="card-img-top" alt="Signed Kobe Basketball">
+        <div class="card-body">
+            <h5 class="card-title">Signed Kobe Basketball</h5>
+            <p>$500</p>
+            <button class="btn btn-primary" onclick="addToCart('Signed Kobe Basketball',500)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="Signed Basketball">
+    <div class="card cardstore">
+        <img src="img/micheal jordan.png" class="card-img-top" alt="Signed Michael Jordan Basketball">
+        <div class="card-body">
+            <h5 class="card-title">Signed Michael Jordan Basketball</h5>
+            <p>$1200</p>
+            <button class="btn btn-primary" onclick="addToCart('Signed Michael Jordan Basketball',1200)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-sm-12 product" data-category="Signed Basketball">
+    <div class="card cardstore">
+        <img src="img/luka magicccccc.png" class="card-img-top" alt="Signed Luka Basketball">
+        <div class="card-body">
+            <h5 class="card-title">Signed Luka Basketball</h5>
+            <p>$380</p>
+            <button class="btn btn-primary" onclick="addToCart('Signed Luka Basketball',380)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+
+
 </body>
 </html>
