@@ -38,64 +38,66 @@ function searchProducts() {
 }
 
 function addToCart(name, price) {
+    let cart = localStorage.getItem("cart");
+
+    if (cart == null) {
+        cart = [];
+    }
+    else {
+        cart = JSON.parse(cart);
+    }
+
+    let product = {
+        name: name,
+        price: price,
+        quantity: 1
+    };
+
+    cart.push(product);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
     alert(name + " added to cart");
 }
 </script>
 
 <nav class="navbar navbar-expand-lg bg-light">
-<div class="container">
+  <div class="container">
 
-<a class="navbar-brand" href="index.html">HoopZone</a>
+    <a class="navbar-brand" href="index.html">HoopZone</a>
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-<span class="navbar-toggler-icon"></span>
-</button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="collapse navbar-collapse" id="nav">
+    <div class="collapse navbar-collapse" id="nav">
 
-<ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto">
 
-<li class="nav-item">
-<a class="nav-link" href="index.html">Home</a>
-</li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
 
-<li class="nav-item">
-<a class="nav-link active" href="products.html">Products</a>
-</li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Products</a>
+        </li>
 
-<li class="nav-item">
-<a class="nav-link" href="about.html">About</a>
-</li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
 
-<li class="nav-item">
-<a class="nav-link" href="contact.html">Contact</a>
-</li>
-   <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="cartDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Cart
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-end"
-                aria-labelledby="cartDropdown"
-                id="cartMenu"
-              >
-                <li>
-                  <span id="emptyCart" class="dropdown-item-text"
-                    >Your cart is empty</span
-                  >
-                </li>
-              </ul>
-</ul>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
 
-</div>
-</div>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">Cart</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
 </nav>
 
 

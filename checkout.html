@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+  <div class="container">
+
+    <a class="navbar-brand" href="index.html">HoopZone</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Products</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">Cart</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+
+      <div class="col-md-6">
+        <h3 class="mb-3">Billing Form</h3>
+
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" id="name">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Address</label>
+          <textarea class="form-control" id="address" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Payment Method</label>
+          <select class="form-control" id="payment">
+            <option value="">Select Payment Method</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+            <option value="PayPal">PayPal</option>
+          </select>
+        </div>
+
+        <button class="btn btn-success" onclick="placeOrder()">Place Order</button>
+
+        <p class="mt-3" id="message"></p>
+      </div>
+
+      <div class="col-md-6">
+        <h3 class="mb-3">Order Summary</h3>
+        <div id="summary"></div>
+        <h4 class="mt-3">Total: $<span id="total">0</span></h4>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function loadSummary() {
+      let cart = localStorage.getItem("cart");
+      let summary = document.getElementById("summary");
+      let total = 0;
+
+      summary.innerHTML = "";
+
+      if (cart == null) {
+        summary.innerHTML = "<p>Your cart is empty</p>";
+        document.getElementById("total").innerHTML = 0;
+      }
+      else {
+        cart = JSON.parse(cart);
+
+        if (cart.length == 0) {
+          summary.innerHTML = "<p>Your cart is empty</p>";
+          document.getElementById("total").innerHTML = 0;
+        }
+        else {
+          for (let i = 0; i < cart.length; i++) {
+            if (cart[i].quantity == null) {
+              cart[i].quantity = 1;
+            }
+
+            let itemTotal = cart[i].price * cart[i].quantity;
+            total = total + itemTotal;
+
+            summary.innerHTML = summary.innerHTML +
+              '<div class="card mb-3">' +
+                '<div class="card-body">' +
+                  '<h5 class="card-title">' + cart[i].name + '</h5>' +
+                  '<p>Price: $' + cart[i].price + '</p>' +
+                  '<p>Quantity: ' + cart[i].quantity + '</p>' +
+                  '<p>Total: $' + itemTotal + '</p>' +
+                '</div>' +
+              '</div>';
+          }
+
+          document.getElementById("total").innerHTML = total;
+        }
+      }
+    }
+
+    function placeOrder() {
+      let name = document.getElementById("name").value;
+      let address = document.getElementById("address").value;
+      let payment = document.getElementById("payment").value;
+      let cart = localStorage.getItem("cart");
+
+      if (name == "") {
+        document.getElementById("message").innerHTML = "Please enter your name";
+        document.getElementById("message").className = "mt-3 text-danger";
+      }
+      else if (address == "") {
+        document.getElementById("message").innerHTML = "Please enter your address";
+        document.getElementById("message").className = "mt-3 text-danger";
+      }
+      else if (payment == "") {
+        document.getElementById("message").innerHTML = "Please select a payment method";
+        document.getElementById("message").className = "mt-3 text-danger";
+      }
+      else if (cart == null || JSON.parse(cart).length == 0) {
+        document.getElementById("message").innerHTML = "Your cart is empty";
+        document.getElementById("message").className = "mt-3 text-danger";
+      }
+      else {
+        document.getElementById("message").innerHTML = "Order placed successfully, no real payment";
+        document.getElementById("message").className = "mt-3 text-success";
+
+        localStorage.removeItem("cart");
+        loadSummary();
+      }
+    }
+
+    loadSummary();
+  </script>
+
+</body>
+</html>
