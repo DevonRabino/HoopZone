@@ -1,0 +1,29 @@
+let contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    //  form values
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+    
+
+
+
+    let messageSubmitted = {
+        email: email,
+        name: name,
+        message: message
+    }
+
+      localStorage.setItem("messageSubmitted", JSON.stringify(messageSubmitted));
+
+      console.log(messageSubmitted);
+      alert("Message submitted (View console)");
+ClearForm();
+      
+    });
+    function ClearForm() {
+        contactForm.reset();
+    }

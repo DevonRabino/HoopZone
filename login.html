@@ -11,8 +11,7 @@
 
 </head>
 <body>
-
-   <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
 
     <a class="navbar-brand">HoopZone</a>
@@ -51,6 +50,10 @@
 
          <li class="nav-item">
           <a class="nav-link" href="register.html">Register</a>
+        </li>
+
+            <li class="nav-item">
+          <a class="nav-link" href="profile.html">Profile</a>
         </li>
 
       </ul>
@@ -101,34 +104,9 @@
     </footer>
 
 
-<script>
-function Login() {
 
-  let email = document.getElementById("Email").value;
-  let password = document.getElementById("Password").value;
 
-  if (email == "") {
-    document.getElementById("Message").innerHTML = "Please Enter email";
-    document.getElementById("Message").className = "text-danger mt-3 text-center";
-  }
-  else if (password == "") {
-    document.getElementById("Message").innerHTML = "Please Enter Password";
-    document.getElementById("Message").className = "text-danger mt-3 text-center";
-  }
-  else {
-
-    let user = {
-      email: email,
-      password: password
-    };
-
-    localStorage.setItem("user", JSON.stringify(user));
-
-    document.getElementById("Message").innerHTML = "Login successful";
-    document.getElementById("Message").className = "text-success mt-3 text-center";
-  }
-}
-</script>
+<script src="./js/login.js"></script>
 
 </body>
 </html>
