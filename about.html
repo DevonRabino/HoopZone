@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/styles.css">
-
 </head>
 <body>
-
-   <nav class="navbar navbar-expand-lg bg-light">
+     <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
 
     <a class="navbar-brand">HoopZone</a>
@@ -58,31 +55,39 @@
     </div>
   </div>
 </nav>
-    <div class="container mt-5">
-  <div class="row justify-content-center">
 
-    <div class="col-md-4">
+<div class="container mt-5">
 
-      <div class="card p-4 shadow">
+<h2 class="text-center mb-4">About HoopZone</h2>
 
-        <h4 class="text-center mb-3">Login</h4>
+<p class="text-center">
+HoopZone is for all the people that love the game of basketball and those who are inspired by them.
+We love to give things that inspire people to play better or feel better.
+</p>
 
-        <input type="text" class="form-control mb-3" id="Email" placeholder="Email">
+<hr class="my-5">
 
-        <input type="password" class="form-control mb-3" id="Password" placeholder="Password">
+<div class="row text-center">
 
-        <button class="btn btn-primary w-100" onclick="Login()">Login</button>
-
-        <p id="Message" class="mt-3 text-center"></p>
-
-      </div>
-
-    </div>
-
-  </div>
+<div class="col-md-6">
+<h3>The Mission</h3>
+<p>
+I wanna give NBA fans the prices that are reasonable and help them get the collectibles they need.
+The smile of the fans when they see our prices is the goal for us.
+</p>
 </div>
 
-  <footer class="bg-dark text-white mt-5 py-4 fixed-bottom">
+<div class="col-md-6">
+<h3>The Vision</h3>
+<p>
+I want to be the first NBA store people will come and buy from. I wish to be at the top and keep 
+selling jerseys for all the big fans.
+</p>
+</div>
+
+</div>
+
+      <footer class="bg-dark text-white mt-5 py-4 fixed-bottom">
         <div class="container-fluid">
         <div class="container">
             <div class="row align-items-center">
@@ -99,36 +104,6 @@
         </div>
         </div>
     </footer>
-
-
-<script>
-function Login() {
-
-  let email = document.getElementById("Email").value;
-  let password = document.getElementById("Password").value;
-
-  if (email == "") {
-    document.getElementById("Message").innerHTML = "Please Enter email";
-    document.getElementById("Message").className = "text-danger mt-3 text-center";
-  }
-  else if (password == "") {
-    document.getElementById("Message").innerHTML = "Please Enter Password";
-    document.getElementById("Message").className = "text-danger mt-3 text-center";
-  }
-  else {
-
-    let user = {
-      email: email,
-      password: password
-    };
-
-    localStorage.setItem("user", JSON.stringify(user));
-
-    document.getElementById("Message").innerHTML = "Login successful";
-    document.getElementById("Message").className = "text-success mt-3 text-center";
-  }
-}
-</script>
 
 </body>
 </html>
